@@ -1,6 +1,6 @@
 <?php 
 include_once("function.php");
-
+$blacklist = array('6282140647578');
 if(isset($_REQUEST['nomor'])){
  $number = $_REQUEST['nomor'];
  //get message ;
@@ -26,9 +26,22 @@ if(isset($_REQUEST['nomor'])){
         $send = sendMEDIA($number,$file,$company);
         // echo $send;
     }
-    /*else{
-        $message = "Mohon maaf nomor ini adalah Nomor BOT 1 arah, harap hubungi owner wa.me/6282140647578 untuk chat personal";
-        sendMSG($number,urlencode($message));
+/*else if(strpos(strtolower($message),"darkjoke") !== false){
+        darkjoke($number,$message,$_REQUEST['port']);
+    }*/
+//     else{
+// 	//if(in_array($_REQUEST['nomor],$blacklist){
+//         $message = "Mohon maaf nomor ini adalah Nomor BOT 1 arah, harap hubungi owner wa.me/6282140647578 untuk chat personal";
+//         sendMSG($number,urlencode($message));
+// 	//}
+//     }
+/*    else{
+        //simsimi
+        $message = simsimi($message);
+        $message = json_decode($message,true);
+        $message = $message['jawaban'];
+	$port = $_REQUEST['port'];
+        sendMSG($number,$message,$port);
     }*/
 }else{
     echo json_encode(array('status'=>false,'message'=>'cant access'));
