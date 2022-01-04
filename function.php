@@ -2,7 +2,7 @@
 function sendMSG($number,$message,$port = '4000'){
         $curl = curl_init();
         curl_setopt_array($curl, array(
-          CURLOPT_URL => "http://fekusa.xyz{$port}:/send",
+          CURLOPT_URL => "http://fekusa.xyz:{$port}/send",
           CURLOPT_RETURNTRANSFER => true,
           CURLOPT_ENCODING => '',
           CURLOPT_MAXREDIRS => 10,
@@ -70,6 +70,27 @@ function simsimi($message){
 
     curl_setopt_array($curl, array(
       CURLOPT_URL => "https://api.xteam.xyz/simsimi?kata=apa%2520sih&APIKEY=25ec40547ebfb96a",
+      CURLOPT_RETURNTRANSFER => true,
+      CURLOPT_ENCODING => '',
+      CURLOPT_MAXREDIRS => 10,
+      CURLOPT_TIMEOUT => 0,
+      CURLOPT_FOLLOWLOCATION => true,
+      CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+      CURLOPT_CUSTOMREQUEST => 'GET',
+      CURLOPT_USERAGENT => $agent,
+    ));
+    
+    $response = curl_exec($curl);
+    
+    curl_close($curl);
+    return $response;
+}
+function getcontact($number){
+    $agent = "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; SV1)";
+    $curl = curl_init();
+
+    curl_setopt_array($curl, array(
+      CURLOPT_URL => "https://unilearning.my.id/cronjobnext/getdatacontact/{$number}",
       CURLOPT_RETURNTRANSFER => true,
       CURLOPT_ENCODING => '',
       CURLOPT_MAXREDIRS => 10,

@@ -1,4 +1,8 @@
 <?php
+$port = '4000';
+if(isset($_REQUEST['port'])){
+    $port = $_REQUEST['port'];
+}
 if(isset($_REQUEST['mode']) && $_REQUEST['mode'] =='GROUP'){
     if (isset($_REQUEST['number']) && isset($_REQUEST['message'])){
         //$number = $_REQUEST['number'];
@@ -6,7 +10,7 @@ if(isset($_REQUEST['mode']) && $_REQUEST['mode'] =='GROUP'){
         $message = $_REQUEST['message'];
         $curl = curl_init();
         curl_setopt_array($curl, array(
-		CURLOPT_URL => "http://fekusa.xyz:4000/send-group-message",
+		CURLOPT_URL => "http://fekusa.xyz:{$port}/send-group-message",
 		CURLOPT_RETURNTRANSFER => true,
 		CURLOPT_ENCODING => "",
 		CURLOPT_MAXREDIRS => 10,
@@ -30,7 +34,7 @@ if(isset($_REQUEST['mode']) && $_REQUEST['mode'] =='GROUP'){
         $message = $_REQUEST['message'];
         $curl = curl_init();
         curl_setopt_array($curl, array(
-		CURLOPT_URL => "http://fekusa.xyz:4000/send-media",
+		CURLOPT_URL => "http://fekusa.xyz:{$port}/send-media",
 		CURLOPT_RETURNTRANSFER => true,
 		CURLOPT_ENCODING => "",
 		CURLOPT_MAXREDIRS => 10,
@@ -52,7 +56,7 @@ if(isset($_REQUEST['mode']) && $_REQUEST['mode'] =='GROUP'){
         $message = $_REQUEST['message'];
         $curl = curl_init();
         curl_setopt_array($curl, array(
-          CURLOPT_URL => 'http://fekusa.xyz:4000/send',
+          CURLOPT_URL => "http://fekusa.xyz:{$port}/send",
           CURLOPT_RETURNTRANSFER => true,
           CURLOPT_ENCODING => '',
           CURLOPT_MAXREDIRS => 10,
